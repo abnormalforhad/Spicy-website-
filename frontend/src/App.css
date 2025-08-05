@@ -1,38 +1,177 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9fafb;
+}
+
 .App {
-    text-align: center;
+  min-height: 100vh;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom scrollbar for cart sidebar */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
 }
 
-.App-link {
-    color: #61dafb;
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Hero section overlay for better text readability */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(251, 146, 60, 0.8) 0%,
+    rgba(251, 146, 60, 0.6) 100%
+  );
 }
+
+/* Product card hover effects */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition duration-300 font-semibold;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-300 transition duration-300 font-semibold;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom animation for cart icon */
+.cart-bounce {
+  animation: cartBounce 0.3s ease;
+}
+
+@keyframes cartBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Responsive design utilities */
+@media (max-width: 768px) {
+  .hero-text {
+    @apply text-3xl px-4;
+  }
+  
+  .product-grid {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .cart-sidebar {
+    @apply w-full;
+  }
+}
+
+/* Custom gradient backgrounds */
+.gradient-orange {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+/* Text shadows for better readability */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom focus states */
+.focus-ring {
+  @apply focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 focus:outline-none;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-orange {
+  @apply bg-orange-100 text-orange-800;
+}
+
+.badge-green {
+  @apply bg-green-100 text-green-800;
+}
+
+/* Custom transitions */
+.transition-all {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Image loading placeholder */
+.image-placeholder {
+  @apply bg-gray-200 animate-pulse;
+}
+
+/* Custom grid system for products */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Spice-themed color palette */
+:root {
+  --spice-red: #dc2626;
+  --spice-orange: #ea580c;
+  --spice-yellow: #d97706;
+  --spice-green: #16a34a;
+  --spice-brown: #92400e;
+  --cream: #fef7ed;
+  --warm-gray: #78716c;
+}
+
+/* Custom utility classes */
+.text-spice-red { color: var(--spice-red); }
+.text-spice-orange { color: var(--spice-orange); }
+.text-spice-yellow { color: var(--spice-yellow); }
+.bg-cream { background-color: var(--cream); }
