@@ -321,7 +321,7 @@ async def initialize_products():
             category="Blends",
             weight="100g",
             image_url="https://images.unsplash.com/photo-1661022166287-1d1ae8dfaec4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwyfHxzcGljZXN8ZW58MHx8fG9yYW5nZXwxNzU0MzgzOTQwfDA&ixlib=rb-4.1.0&q=85",
-            featured=true
+            featured=True
         ),
         Product(
             name="Black Pepper Powder",
